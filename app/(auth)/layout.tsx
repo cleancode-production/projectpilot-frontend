@@ -8,7 +8,7 @@ export default function AuthLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-my-background text-my-foreground flex items-center justify-center min-h-screen">
+      <body className="bg-black text-my-foreground flex items-center justify-center min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
