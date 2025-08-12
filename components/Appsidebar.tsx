@@ -25,7 +25,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
-import { useRef } from "react";
 import { Button } from "./ui/button";
 
 const items = [
@@ -50,8 +49,6 @@ const items = [
 ];
 
 export function AppSidebar() {
-  const sidebarRef = useRef(null);
-
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="py-4 ">
