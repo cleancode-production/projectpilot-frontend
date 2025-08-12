@@ -1,6 +1,12 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, Loader2, UserPlus, Mail, User, Lock } from "lucide-react";
@@ -9,7 +15,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function RegisterPage() {
-  const router = useRouter()
+  const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -40,9 +46,15 @@ export default function RegisterPage() {
     try {
       const res = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
-        headers: { "Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ firstName, lastName, username, email, password }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          username,
+          email,
+          password,
+        }),
       });
 
       if (!res.ok) {
@@ -52,11 +64,10 @@ export default function RegisterPage() {
       }
 
       router.push("/login");
-
-    } catch (error){
-      setError("Serverfehler - Bitte versuche es später erneut")
+    } catch (error) {
+      setError("Serverfehler - Bitte versuche es später erneut");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
@@ -77,7 +88,10 @@ export default function RegisterPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-sm font-medium text-gray-200 flex items-center gap-2">
+                  <Label
+                    htmlFor="firstName"
+                    className="text-sm font-medium text-gray-200 flex items-center gap-2"
+                  >
                     <User className="h-4 w-4 text-yellow-400" />
                     Vorname
                   </Label>
@@ -94,7 +108,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-sm font-medium text-gray-200 flex items-center gap-2">
+                  <Label
+                    htmlFor="lastName"
+                    className="text-sm font-medium text-gray-200 flex items-center gap-2"
+                  >
                     <User className="h-4 w-4 text-yellow-400" />
                     Nachname
                   </Label>
@@ -112,7 +129,10 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-sm font-medium text-gray-200 flex items-center gap-2">
+                <Label
+                  htmlFor="username"
+                  className="text-sm font-medium text-gray-200 flex items-center gap-2"
+                >
                   <User className="h-4 w-4 text-yellow-400" />
                   Benutzername
                 </Label>
@@ -129,7 +149,10 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium text-gray-200 flex items-center gap-2">
+                <Label
+                  htmlFor="email"
+                  className="text-sm font-medium text-gray-200 flex items-center gap-2"
+                >
                   <Mail className="h-4 w-4 text-yellow-400" />
                   E-Mail-Adresse
                 </Label>
@@ -144,10 +167,13 @@ export default function RegisterPage() {
                   className="h-12 bg-gray-900 border-gray-700 text-white placeholder-gray-400 focus:border-yellow-400 focus:ring-yellow-400"
                 />
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-sm font-medium text-gray-200 flex items-center gap-2">
+                  <Label
+                    htmlFor="password"
+                    className="text-sm font-medium text-gray-200 flex items-center gap-2"
+                  >
                     <Lock className="h-4 w-4 text-yellow-400" />
                     Passwort
                   </Label>
@@ -180,7 +206,10 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-200 flex items-center gap-2">
+                  <Label
+                    htmlFor="confirmPassword"
+                    className="text-sm font-medium text-gray-200 flex items-center gap-2"
+                  >
                     <Lock className="h-4 w-4 text-yellow-400" />
                     Passwort bestätigen
                   </Label>
@@ -200,7 +229,9 @@ export default function RegisterPage() {
                       variant="ghost"
                       size="sm"
                       className="absolute right-0 top-0 h-12 px-3 py-2 hover:bg-gray-800"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
                       disabled={loading}
                     >
                       {showConfirmPassword ? (
@@ -219,10 +250,18 @@ export default function RegisterPage() {
                 </div>
               )}
 
-              <Button 
-                type="submit" 
-                className="w-full h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200" 
-                disabled={loading || !firstName || !lastName || !username || !email || !password || !confirmPassword}
+              <Button
+                type="submit"
+                className="w-full h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                disabled={
+                  loading ||
+                  !firstName ||
+                  !lastName ||
+                  !username ||
+                  !email ||
+                  !password ||
+                  !confirmPassword
+                }
               >
                 {loading ? (
                   <>
@@ -240,8 +279,8 @@ export default function RegisterPage() {
               <div className="text-center pt-4">
                 <p className="text-gray-300">
                   Bereits ein Konto?{" "}
-                  <Link 
-                    href="/login" 
+                  <Link
+                    href="/login"
                     className="font-semibold text-yellow-400 hover:text-yellow-300 hover:underline transition-colors"
                   >
                     Jetzt anmelden
