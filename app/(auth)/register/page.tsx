@@ -65,6 +65,7 @@ export default function RegisterPage() {
 
       router.push("/login");
     } catch (error) {
+      console.log("error beim registrieren: ", error);
       setError("Serverfehler - Bitte versuche es später erneut");
     } finally {
       setLoading(false);
