@@ -14,7 +14,7 @@ export function useCreateWorkspace() {
       });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        throw new Error((err as any).message || "Erstellen fehlgeschlagen");
+        throw new Error(err.message || "Erstellen fehlgeschlagen");
       }
       return res.json();
     },
@@ -40,7 +40,7 @@ export function useRenameWorkspace() {
       );
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        throw new Error((err as any).message || "Umbenennen fehlgeschlagen");
+        throw new Error(err.message || "Umbenennen fehlgeschlagen");
       }
       return res.json();
     },

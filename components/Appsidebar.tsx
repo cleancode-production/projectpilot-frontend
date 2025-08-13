@@ -15,7 +15,7 @@ import {
 import { IoHome, IoLayers } from "react-icons/io5";
 
 import { IoIosMail } from "react-icons/io";
-import { FaUserAlt, FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaUserAlt, FaChevronUp } from "react-icons/fa";
 
 import Link from "next/link";
 import {
@@ -25,7 +25,6 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
-import { Button } from "./ui/button";
 import WorkspaceSwitcher from "./workspace/WorkspaceSwitcher";
 
 const items = [

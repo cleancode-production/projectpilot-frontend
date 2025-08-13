@@ -16,15 +16,6 @@ export type WorkspaceDetail = {
   projects: Array<{ id: string; name: string }>;
 };
 
-// (optional) zentraler Helper für Fehlermeldungen
-async function parseOrDefault<T = any>(res: Response, fallback: T = {} as T) {
-  try {
-    return await res.json();
-  } catch {
-    return fallback;
-  }
-}
-
 // ---- Summary-Liste (Dropdown) ----
 export function useWorkspacesSummary() {
   return useQuery<WorkspaceSummary[]>({
@@ -34,10 +25,8 @@ export function useWorkspacesSummary() {
         "http://localhost:5000/api/workspaces?view=summary"
       );
       if (!res.ok) {
-        const err = await parseOrDefault(res);
-        throw new Error(
-          (err as any).message || "Fehler beim Laden der Workspaces"
-        );
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || "Fehler beim Laden der Workspaces");
       }
       return res.json() as Promise<WorkspaceSummary[]>;
     },
@@ -63,10 +52,8 @@ export function useWorkspaceDetail(id?: string) {
         `http://localhost:5000/api/workspaces/${id}`
       );
       if (!res.ok) {
-        const err = await parseOrDefault(res);
-        throw new Error(
-          (err as any).message || "Fehler beim Laden des Workspace"
-        );
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || "Fehler beim Laden des Workspace");
       }
       return res.json() as Promise<WorkspaceDetail>;
     },
