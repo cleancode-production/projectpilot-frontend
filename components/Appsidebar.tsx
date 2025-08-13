@@ -26,6 +26,7 @@ import {
 } from "./ui/dropdown-menu";
 
 import { Button } from "./ui/button";
+import WorkspaceSwitcher from "./workspace/WorkspaceSwitcher";
 
 const items = [
   {
@@ -69,13 +70,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              <Button className="mt-10 flex justify-between bg-card text-foreground hover:bg-card-hover items-center">
-                <div className="text-xl">Workspace</div>
-                <span className="text-xl">
-                  <FaChevronUp />
-                  <FaChevronDown />
-                </span>
-              </Button>
+              <WorkspaceSwitcher />
               {items.map((item) => (
                 <SidebarMenuItem className="my-4" key={item.id}>
                   <SidebarMenuButton asChild>
