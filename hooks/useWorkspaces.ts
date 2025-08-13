@@ -81,7 +81,7 @@ export function useLastWorkspaceDetail() {
       );
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        throw new Error((err as any).message || "Kein Workspace gefunden");
+        throw new Error(err.message || "Kein Workspace gefunden");
       }
       const data = (await res.json()) as WorkspaceDetail;
 
