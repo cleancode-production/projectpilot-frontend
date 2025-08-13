@@ -80,7 +80,7 @@ export function useLastWorkspaceDetail() {
         "http://localhost:5000/api/workspaces/last"
       );
       if (!res.ok) {
-        const err = await parseOrDefault(res);
+        const err = await res.json().catch(() => ({}));
         throw new Error((err as any).message || "Kein Workspace gefunden");
       }
       const data = (await res.json()) as WorkspaceDetail;
