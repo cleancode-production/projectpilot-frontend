@@ -21,7 +21,7 @@ export default function LoginPage() {
       await loginMutation.mutateAsync({ email, password });
       router.push("/");
     } catch (err) {
-      // Fehlerhandling ist optional, weil loginMutation.error schon alles hat
+      console.error("Login failed:", err);
     }
   }
 
