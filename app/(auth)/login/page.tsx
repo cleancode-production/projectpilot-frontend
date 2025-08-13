@@ -58,12 +58,12 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+    <div className="min-h-screen  flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Login Form Card */}
-        <Card className="bg-gray-950 border-gray-800 shadow-2xl backdrop-blur-sm">
+        <Card className="bg-card border-gray-800 shadow-2xl backdrop-blur-sm">
           <CardHeader className="text-center pb-8 pt-8">
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+            <CardTitle className="text-3xl font-bold bg-foreground bg-clip-text text-transparent">
               Willkommen zurück
             </CardTitle>
             <CardDescription className="text-lg text-gray-300 mt-2">
@@ -77,7 +77,7 @@ export default function LoginPage() {
                   htmlFor="email"
                   className="text-sm font-medium text-gray-200 flex items-center gap-2"
                 >
-                  <Mail className="h-4 w-4 text-yellow-400" />
+                  <Mail className="h-4 w-4 text-gold" />
                   E-Mail-Adresse
                 </Label>
                 <Input
@@ -97,7 +97,7 @@ export default function LoginPage() {
                   htmlFor="password"
                   className="text-sm font-medium text-gray-200 flex items-center gap-2"
                 >
-                  <Lock className="h-4 w-4 text-yellow-400" />
+                  <Lock className="h-4 w-4 text-gold" />
                   Passwort
                 </Label>
                 <div className="relative">
@@ -136,7 +136,7 @@ export default function LoginPage() {
 
               <Button
                 type="submit"
-                className="w-full h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                className="w-full h-12 bg-gradient-to-r from-gold to-yellow-800 hover:from-yellow-500 hover:to-yellow-700 text-black font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
                 disabled={loading || !email || !password}
               >
                 {loading ? (
@@ -157,7 +157,7 @@ export default function LoginPage() {
                   Noch kein Konto?{" "}
                   <Link
                     href="/register"
-                    className="font-semibold text-yellow-400 hover:text-yellow-300 hover:underline transition-colors"
+                    className="font-semibold text-gold hover:text-yellow-300 hover:underline transition-colors"
                   >
                     Jetzt registrieren
                   </Link>
