@@ -13,3 +13,9 @@ export type LoginResponse = {
   user: User;
   accessToken: string;
 };
+
+export type RegisterResponse = {
+  userId: string,
+  accessToken: string,
+  workspaceId: string,
+}
