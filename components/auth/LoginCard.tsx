@@ -22,7 +22,7 @@ type LoginCardProps = {
   showPassword: boolean;
   setShowPassword: (value: boolean) => void;
   error: string;
-  handleSubmit: (e: React.FormEvent) => void;
+  onSubmit: (e: React.FormEvent) => Promise<void>;
 };
 
 export default function LoginCard({
@@ -34,7 +34,7 @@ export default function LoginCard({
   showPassword,
   setShowPassword,
   error,
-  handleSubmit,
+  onSubmit: handleSubmit,
 }: LoginCardProps) {
   return (
     <Card className="bg-card border-gray-800 shadow-2xl backdrop-blur-sm">

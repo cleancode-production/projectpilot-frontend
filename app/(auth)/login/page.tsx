@@ -1,25 +1,28 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Layers } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useLogin } from "@/hooks/useLogin";
 import LoginCard from "@/components/auth/LoginCard";
+import { Card, CardContent } from "@/components/ui/card";
+import { Layers } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const loginMutation = useLogin();
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    loginMutation.mutate({ email, password });
+    try {
+      await loginMutation.mutateAsync({ email, password });
+      router.push("/");
+    } catch (err) {
+      // Fehlerhandling ist optional, weil loginMutation.error schon alles hat
+    }
   }
 
   return (
@@ -31,11 +34,13 @@ export default function LoginPage() {
           setEmail={setEmail}
           password={password}
           setPassword={setPassword}
-          loading={loading}
           showPassword={showPassword}
           setShowPassword={setShowPassword}
-          error={error}
-          handleSubmit={handleSubmit}
+          onSubmit={handleSubmit}
+          loading={loginMutation.isPending}
+          error={
+            loginMutation.isError ? (loginMutation.error as Error).message : ""
+          }
         />
 
         {/* Logo Card */}
