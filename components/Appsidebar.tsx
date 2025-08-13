@@ -65,13 +65,13 @@ export function AppSidebar() {
 
       <SidebarSeparator className="bg-card" />
 
-      <SidebarContent className="bg-background text-my-foreground font-bold">
+      <SidebarContent className="bg-background text-foreground font-bold">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              <Button className="mt-10 flex justify-between bg-card text-foreground hover:bg-muted-foreground">
-                <div>Workspace</div>
-                <span className="text-4xl">
+              <Button className="mt-10 flex justify-between bg-card text-foreground hover:bg-card-hover items-center">
+                <div className="text-xl">Workspace</div>
+                <span className="text-xl">
                   <FaChevronUp />
                   <FaChevronDown />
                 </span>
@@ -93,12 +93,12 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="bg-card">
+      <SidebarFooter className="bg-background text-foreground">
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton className="text-lg flex justify-between">
+                <SidebarMenuButton className="text-lg h-12 mb-6 bg-card flex justify-between">
                   <div className="flex items-center gap-2">
                     <FaUserAlt />
                     UserName
